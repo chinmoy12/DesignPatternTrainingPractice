@@ -12,7 +12,6 @@ import com.sourcenext.designpatterntrainingpractice.patterns.factory.MyView;
 
 public class RectangleView extends MyView {
     Paint paint;
-
     public RectangleView(Context context) {
         super(context);
         init();
