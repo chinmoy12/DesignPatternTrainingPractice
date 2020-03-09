@@ -9,7 +9,7 @@ import com.sourcenext.designpatterntrainingpractice.views.RectangleView;
 import com.sourcenext.designpatterntrainingpractice.views.StraightLineView;
 
 public class ViewFactoryDPT {
-    public static View getView(Context context, ViewType shapeType) {
+    public static MyView getView(Context context, ViewType shapeType) {
         if (shapeType == ViewType.RECTANGLE) {
             return new RectangleView(context);
         } else if (shapeType == ViewType.TRIANGLE) {

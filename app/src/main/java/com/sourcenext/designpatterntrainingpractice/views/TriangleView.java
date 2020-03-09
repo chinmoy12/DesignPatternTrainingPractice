@@ -2,16 +2,16 @@ package com.sourcenext.designpatterntrainingpractice.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.util.AttributeSet;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 
-public class TriangleView extends View {
+import com.sourcenext.designpatterntrainingpractice.patterns.factory.MyView;
+
+public class TriangleView extends MyView {
     Paint paint;
     public TriangleView(Context context) {
         super(context);

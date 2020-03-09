@@ -4,12 +4,14 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.sourcenext.designpatterntrainingpractice.patterns.factory.MyView;
+
 public class MoveViewTouchListener implements View.OnTouchListener {
     private GestureDetector mGestureDetector;
-    private View mView;
+    private MyView mView;
 
 
-    public MoveViewTouchListener(View view) {
+    public MoveViewTouchListener(MyView view) {
         mGestureDetector = new GestureDetector(view.getContext(), mGestureListener);
         mView = view;
     }
@@ -26,6 +28,7 @@ public class MoveViewTouchListener implements View.OnTouchListener {
         public boolean onDown(MotionEvent e) {
             mMotionDownX = e.getRawX() - mView.getTranslationX();
             mMotionDownY = e.getRawY() - mView.getTranslationY();
+            mView.notifyAllObservers();
             return true;
         }
 
@@ -33,6 +36,7 @@ public class MoveViewTouchListener implements View.OnTouchListener {
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             mView.setTranslationX(e2.getRawX() - mMotionDownX);
             mView.setTranslationY(e2.getRawY() - mMotionDownY);
+            mView.notifyAllObservers();
             return true;
         }
     };

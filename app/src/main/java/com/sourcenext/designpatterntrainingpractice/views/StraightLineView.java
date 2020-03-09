@@ -5,11 +5,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 
-public class StraightLineView extends View {
+import com.sourcenext.designpatterntrainingpractice.patterns.factory.MyView;
+
+public class StraightLineView extends MyView {
     Paint paint;
     public StraightLineView(Context context) {
         super(context);

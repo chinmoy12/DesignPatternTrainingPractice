@@ -6,7 +6,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <Button
@@ -31,57 +33,69 @@
             android:text="Line" />
     </LinearLayout>
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
-
-        <TextView
-            android:id="@+id/shapeX"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:text="X: " />
-
-        <TextView
-            android:id="@+id/shapeY"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_below="@+id/shapeX"
-            android:layout_alignParentLeft="true"
-            android:text="Y: " />
-
-        <View
-            android:id="@+id/v"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            android:layout_centerInParent="true"/>
-
-        <TextView
-            android:id="@+id/shapeWidth"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_toRightOf="@+id/v"
-            android:text="Width: " />
-
-        <TextView
-            android:id="@+id/shapeHeight"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_below="@+id/shapeWidth"
-            android:layout_toRightOf="@+id/v"
-            android:text="Height: " />
-
-    </RelativeLayout>
-
     <com.sourcenext.designpatterntrainingpractice.views.DesignView
         android:id="@+id/designView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center">
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="8">
 
     </com.sourcenext.designpatterntrainingpractice.views.DesignView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/shapeX"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_weight="1"
+                android:text="X: " />
+
+            <TextView
+                android:id="@+id/shapeY"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shapeX"
+                android:layout_alignParentLeft="true"
+                android:layout_weight="1"
+                android:text="Y: " />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/shapeWidth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Width: " />
+
+            <TextView
+                android:id="@+id/shapeHeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Height: " />
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>
