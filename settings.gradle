@@ -1,0 +1,2 @@
+rootProject.name='DesignPatternTrainingPractice'
+include ':app'
