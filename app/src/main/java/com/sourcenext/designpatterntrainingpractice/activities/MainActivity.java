@@ -1,4 +1,4 @@
-package com.sourcenext.designpatterntrainingpractice;
+package com.sourcenext.designpatterntrainingpractice.activities;
 
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.sourcenext.designpatterntrainingpractice.R;
 import com.sourcenext.designpatterntrainingpractice.listeners.MoveViewTouchListener;
 import com.sourcenext.designpatterntrainingpractice.patterns.command.UndoRedoMyViewCommand;
 import com.sourcenext.designpatterntrainingpractice.patterns.composite.MyViewComposite;
@@ -34,15 +35,15 @@ public class MainActivity extends AppCompatActivity implements ViewObserver, Vie
     public void drawRectangle(View view) {
         MyView v = MyViewFactory.getView(this, ViewType.RECTANGLE);
         v.attach(this);
-        RelativeLayout.LayoutParams layout_description = new RelativeLayout.LayoutParams(300,
-                200);
+        RelativeLayout.LayoutParams layout_description = new RelativeLayout.LayoutParams(500,
+                300);
         v.setLayoutParams(layout_description);
         v.setOnTouchListener(new MoveViewTouchListener(v));
         myViewComposite.addMyView(v);
         designView.addView(v);
     }
 
-    public void drawCircle(View view) {
+    public void drawTriangle(View view) {
         MyView v = MyViewFactory.getView(this, ViewType.TRIANGLE);
         v.attach(this);
         RelativeLayout.LayoutParams layout_description = new RelativeLayout.LayoutParams(300,

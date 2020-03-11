@@ -9,9 +9,11 @@ import android.util.AttributeSet;
 import androidx.annotation.Nullable;
 
 import com.sourcenext.designpatterntrainingpractice.patterns.factory.MyView;
+import com.sourcenext.designpatterntrainingpractice.utils.Utils;
 
 public class RectangleView extends MyView {
     Paint paint;
+    boolean isSelected = true;
     public RectangleView(Context context) {
         super(context);
         init();
@@ -30,7 +32,14 @@ public class RectangleView extends MyView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
+        if (isSelected) {
+            Utils.drawSelectedFrame(canvas);
+        }
+
+
+
+
+        canvas.drawRect(30, 30, getWidth()-30, getHeight()-30, paint);
     }
 
     private void init(){
