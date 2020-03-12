@@ -9,11 +9,27 @@ import android.util.AttributeSet;
 import androidx.annotation.Nullable;
 
 import com.sourcenext.designpatterntrainingpractice.patterns.factory.MyView;
+import com.sourcenext.designpatterntrainingpractice.patterns.observer.ViewObserver;
+import com.sourcenext.designpatterntrainingpractice.utils.Constants;
 import com.sourcenext.designpatterntrainingpractice.utils.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RectangleView extends MyView {
     Paint paint;
-    boolean isSelected = true;
+    boolean isSelected = false;
+    private List<ViewObserver> observers = new ArrayList<ViewObserver>();
+    @Override
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    @Override
+    public void setSelected(boolean flag) {
+        isSelected = flag;
+    }
+
     public RectangleView(Context context) {
         super(context);
         init();
@@ -35,11 +51,7 @@ public class RectangleView extends MyView {
         if (isSelected) {
             Utils.drawSelectedFrame(canvas);
         }
-
-
-
-
-        canvas.drawRect(30, 30, getWidth()-30, getHeight()-30, paint);
+        canvas.drawRect(Constants.boundaryRectangleSize, Constants.boundaryRectangleSize, (getWidth() - Constants.boundaryRectangleSize), (getHeight() - Constants.boundaryRectangleSize), paint);
     }
 
     private void init(){

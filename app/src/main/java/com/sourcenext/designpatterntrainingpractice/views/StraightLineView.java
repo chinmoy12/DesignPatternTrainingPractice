@@ -9,9 +9,23 @@ import android.util.AttributeSet;
 import androidx.annotation.Nullable;
 
 import com.sourcenext.designpatterntrainingpractice.patterns.factory.MyView;
+import com.sourcenext.designpatterntrainingpractice.utils.Constants;
+import com.sourcenext.designpatterntrainingpractice.utils.Utils;
 
 public class StraightLineView extends MyView {
     Paint paint;
+    boolean isSelected = false;
+
+    @Override
+    public boolean isSelected() {
+        return false;
+    }
+
+    @Override
+    public void setSelected(boolean flag) {
+        isSelected = flag;
+    }
+
     public StraightLineView(Context context) {
         super(context);
         init();
@@ -30,7 +44,10 @@ public class StraightLineView extends MyView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawLine(0, getHeight()/2, getWidth(), getHeight()/2, paint);
+        if (isSelected) {
+            Utils.drawSelectedFrame(canvas);
+        }
+        canvas.drawLine(Constants.boundaryRectangleSize, getHeight()/2, (getWidth() - Constants.boundaryRectangleSize), getHeight()/2, paint);
     }
 
     private void init(){

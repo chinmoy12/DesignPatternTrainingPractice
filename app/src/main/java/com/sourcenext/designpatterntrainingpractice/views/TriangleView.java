@@ -2,6 +2,7 @@ package com.sourcenext.designpatterntrainingpractice.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
@@ -10,9 +11,23 @@ import android.util.AttributeSet;
 import androidx.annotation.Nullable;
 
 import com.sourcenext.designpatterntrainingpractice.patterns.factory.MyView;
+import com.sourcenext.designpatterntrainingpractice.utils.Constants;
+import com.sourcenext.designpatterntrainingpractice.utils.Utils;
 
 public class TriangleView extends MyView {
     Paint paint;
+    boolean isSelected = false;
+
+    @Override
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    @Override
+    public void setSelected(boolean flag) {
+        isSelected = flag;
+    }
+
     public TriangleView(Context context) {
         super(context);
         init();
@@ -31,9 +46,12 @@ public class TriangleView extends MyView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Point a = new Point(getWidth()/2, 0);
-        Point b = new Point(0, getHeight());
-        Point c = new Point(getWidth(), getHeight());
+        if (isSelected) {
+            Utils.drawSelectedFrame(canvas);
+        }
+        Point a = new Point((getWidth() / 2), Constants.boundaryRectangleSize);
+        Point b = new Point(Constants.boundaryRectangleSize, (getHeight() - Constants.boundaryRectangleSize));
+        Point c = new Point((getWidth() - Constants.boundaryRectangleSize), (getHeight() - Constants.boundaryRectangleSize));
 
         Path path = new Path();
         path.moveTo(a.x, a.y);
@@ -46,7 +64,7 @@ public class TriangleView extends MyView {
     private void init(){
         paint = new Paint();
         paint.setStrokeWidth(10);
-        paint.setColor(android.graphics.Color.GREEN);
+        paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
     }

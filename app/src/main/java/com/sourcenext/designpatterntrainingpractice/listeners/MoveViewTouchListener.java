@@ -18,6 +18,7 @@ public class MoveViewTouchListener implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        mView.setSelected(true);
         return mGestureDetector.onTouchEvent(event);
     }
 
@@ -28,7 +29,7 @@ public class MoveViewTouchListener implements View.OnTouchListener {
         public boolean onDown(MotionEvent e) {
             mMotionDownX = e.getRawX() - mView.getTranslationX();
             mMotionDownY = e.getRawY() - mView.getTranslationY();
-            mView.notifyAllObservers();
+            mView.notifyAllObservers(mView, mView.getX(), mView.getY(), mView.getWidth(), mView.getHeight());
             return true;
         }
 
@@ -36,7 +37,7 @@ public class MoveViewTouchListener implements View.OnTouchListener {
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             mView.setTranslationX(e2.getRawX() - mMotionDownX);
             mView.setTranslationY(e2.getRawY() - mMotionDownY);
-            mView.notifyAllObservers();
+            mView.notifyAllObservers(mView, mView.getX(), mView.getY(), mView.getWidth(), mView.getHeight());
             return true;
         }
     };

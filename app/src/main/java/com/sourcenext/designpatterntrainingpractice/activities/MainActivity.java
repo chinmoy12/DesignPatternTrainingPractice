@@ -1,6 +1,7 @@
 package com.sourcenext.designpatterntrainingpractice.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -57,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements ViewObserver, Vie
     public void drawLine(View view) {
         MyView v = MyViewFactory.getView(this, ViewType.STRAIGHTLINE);
         v.attach(this);
-        RelativeLayout.LayoutParams layout_description = new RelativeLayout.LayoutParams(400,
-                100);
+        RelativeLayout.LayoutParams layout_description = new RelativeLayout.LayoutParams(500,
+                150);
         v.setLayoutParams(layout_description);
         v.setOnTouchListener(new MoveViewTouchListener(v));
         myViewComposite.addMyView(v);
@@ -66,7 +67,15 @@ public class MainActivity extends AppCompatActivity implements ViewObserver, Vie
     }
 
     @Override
-    public void updateView(float x, float y, float width, float height) {
+    public void updateView(MyView myView, float x, float y, float width, float height) {
+        for (int i = 0; i < myViewComposite.getViewListsSize(); i++) {
+            MyView mv = myViewComposite.getViewFromList(i);
+            if (!mv.equals(myView)) {
+                mv.setSelected(false);
+            }
+            mv.invalidate();
+        }
+
         ((TextView) findViewById(R.id.shapeX)).setText("X: " + (int) x);
         ((TextView) findViewById(R.id.shapeY)).setText("Y: " + (int) y);
         ((TextView) findViewById(R.id.shapeWidth)).setText("Width: " + (int) width);
@@ -75,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements ViewObserver, Vie
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        updateView(0, 0, 0, 0);
+//        updateView(0, 0, 0, 0);
         return false;
     }
 

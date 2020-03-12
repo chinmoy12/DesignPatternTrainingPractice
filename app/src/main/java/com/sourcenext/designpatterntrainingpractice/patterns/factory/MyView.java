@@ -11,7 +11,11 @@ import com.sourcenext.designpatterntrainingpractice.patterns.observer.ViewObserv
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyView extends View {
+public abstract class MyView extends View {
+    public abstract boolean isSelected();
+
+    public abstract void setSelected(boolean flag);
+
     private List<ViewObserver> observers = new ArrayList<ViewObserver>();
 
     public MyView(Context context) {
@@ -30,9 +34,9 @@ public class MyView extends View {
         observers.add(observer);
     }
 
-    public void notifyAllObservers(){
+    public void notifyAllObservers(MyView myView, float x, float y, float width, float height){
         for (ViewObserver observer : observers) {
-            observer.updateView(getX(), getY(), getWidth(), getHeight());
+            observer.updateView(myView, x, y, width, height);
         }
     }
 }

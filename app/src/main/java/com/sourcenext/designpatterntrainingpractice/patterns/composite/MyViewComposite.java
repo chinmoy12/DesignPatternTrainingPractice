@@ -14,6 +14,16 @@ public class MyViewComposite extends MyView {
 
     private List<MyView> mMyViewsList = new ArrayList<MyView>();
 
+    @Override
+    public boolean isSelected() {
+        return false;
+    }
+
+    @Override
+    public void setSelected(boolean flag) {
+
+    }
+
     public MyViewComposite(Context context) {
         super(context);
     }
@@ -32,6 +42,14 @@ public class MyViewComposite extends MyView {
 
     public void removeMyView(MyView myView){
         mMyViewsList.remove(myView);
+    }
+
+    public int getViewListsSize() {
+        return mMyViewsList.size();
+    }
+
+    public MyView getViewFromList(int index) {
+        return mMyViewsList.get(index);
     }
 
     public void clearAllMyView(){
