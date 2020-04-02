@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -90,9 +91,11 @@ public class MainActivity extends AppCompatActivity implements ViewObserver, Vie
 
     public void undoAction(View view) {
 //        undoRedoMyViewCommand.setCommand(new UndoMyView());
+        Toast.makeText(this, "Will be added later", Toast.LENGTH_SHORT).show();
     }
 
     public void redoAction(View view) {
 //        undoRedoMyViewCommand.setCommand(new RedoMyView());
+        Toast.makeText(this, "Will be added later", Toast.LENGTH_SHORT).show();
     }
 }
