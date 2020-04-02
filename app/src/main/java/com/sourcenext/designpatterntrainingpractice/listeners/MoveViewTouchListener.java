@@ -9,8 +9,6 @@ import com.sourcenext.designpatterntrainingpractice.patterns.factory.MyView;
 public class MoveViewTouchListener implements View.OnTouchListener {
     private GestureDetector mGestureDetector;
     private MyView mView;
-
-
     public MoveViewTouchListener(MyView view) {
         mGestureDetector = new GestureDetector(view.getContext(), mGestureListener);
         mView = view;
@@ -19,6 +17,19 @@ public class MoveViewTouchListener implements View.OnTouchListener {
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         mView.setSelected(true);
+
+        int x = (int)event.getX();
+        int y = (int)event.getY();
+
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                break;
+            case MotionEvent.ACTION_MOVE:
+                mView.getLayoutParams().width = x;
+                mView.getLayoutParams().height = y;
+                mView.requestLayout();
+                break;
+        }
         return mGestureDetector.onTouchEvent(event);
     }
 
